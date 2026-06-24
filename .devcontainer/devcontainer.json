@@ -4,8 +4,9 @@
     
     "service": "frontend",
 
-    // Magic that sets up the docker networks on the deployment server
-    "initializeCommand": "docker network create caddy_network || true",
+    // Magic Startup Commands
+    "postCreateCommand": "git config --global core.hooksPath /dev/null",
+    "postStartCommand": "docker network create caddy_network || true && docker compose up -d",
 
     // Magic that makes the docker image work within the Codespace
     "features": {
@@ -23,5 +24,4 @@
             }
         }
     },
-    "postCreateCommand": "git config --global core.hooksPath /dev/null"
 }

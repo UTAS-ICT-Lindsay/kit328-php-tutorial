@@ -1,6 +1,8 @@
 services:
   frontend:
     build: ./frontend
+    ports:
+      - 8080:80
     volumes:
       - ./frontend:/var/www/html
     networks:
@@ -11,4 +13,4 @@ services:
 
 networks:
   caddy_network:
-    external: true
+    external: false
