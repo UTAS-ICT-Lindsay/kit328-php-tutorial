@@ -1,0 +1,14 @@
+services:
+  frontend:
+    build: ./frontend
+    volumes:
+      - ./frontend:/var/www/html
+    networks:
+      - caddy_network
+    labels:
+      caddy: ${REPO_NAME}
+      caddy.reverse_proxy: "{{upstreams 3000}}"
+
+networks:
+  caddy_network:
+    external: true
